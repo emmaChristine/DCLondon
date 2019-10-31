@@ -1,0 +1,21 @@
+apply plugin: 'java-library'
+
+apply plugin: 'kotlin'
+
+jar {
+    manifest {
+        attributes("Lint-Registry-v2": "com.linter.lint.MyFirstIssueRegistry")
+    }
+}
+
+targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    compileOnly "com.android.tools.lint:lint-api:26.5.1"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation "com.android.tools.lint:lint:26.5.1"
+    testImplementation "com.android.tools.lint:lint-tests:26.5.1"
+}
